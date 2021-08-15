@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
   password: any;
   role: any;
 
+  responseMessage:any;
+
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -25,12 +27,17 @@ export class LoginComponent implements OnInit {
       userPassword: this.password,
       userRole: this.role
     }
-    this.loginService.signUp(data).subscribe((response) => {
+    // if(this.username == undefined || this.password== undefined || this.role==undefined){
+
+    // }else{
+    this.loginService.signUp(data).subscribe((response:any) => {
       console.log(response);
+      this.responseMessage=response?.message;
     }, (error) => {
       console.log(error);
+      this.responseMessage=error;
     });
-
+ // }
   }
 
 }
