@@ -1,43 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service'
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  username: any;
-  password: any;
-  role: any;
 
-  responseMessage:any;
+  hide: boolean = false;
 
-  constructor(private loginService: LoginService) { }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder,
+    private router: Router) {
   }
 
-   userLogin() {
-    // console.log("this is saurav trying to login "+this.username+"-----"+this.password);
-    // this.loginService.loginUser(this.username,this.password);
+  ngOnInit() {
+  }
 
-    var data = {
-      userName: this.username,
-      userPassword: this.password,
-      userRole: this.role
+  loginForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  })
+
+
+  onLogin() {
+    if (!this.loginForm.valid) {
+      return;
     }
-    // if(this.username == undefined || this.password== undefined || this.role==undefined){
-
-    // }else{
-    this.loginService.signUp(data).subscribe((response:any) => {
-      console.log(response);
-      this.responseMessage=response?.message;
-    }, (error) => {
-      console.log(error);
-      this.responseMessage=error;
-    });
- // }
+    console.log(this.loginForm.value);
+    localStorage.setItem('email', "123");
+    this.router.navigate(['/admin/module']);
   }
 
 }

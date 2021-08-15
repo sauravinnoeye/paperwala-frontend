@@ -1,0 +1,48 @@
+<div class="dialogClass">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row wrap" fxLayoutGap="10px">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Vendor Name</mat-label>
+          <input placeholder="Vendor Name" matInput [(ngModel)]="local_data.vendorName">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Type</mat-label>
+          <input placeholder="Type" matInput [(ngModel)]="local_data.type" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Agency</mat-label>
+          <input placeholder="Agency" matInput [(ngModel)]="local_data.agency">
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Contact</mat-label>
+          <input placeholder="Contact" matInput [(ngModel)]="local_data.contact">
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Unique Id</mat-label>
+            <input placeholder="Unique Id" matInput [(ngModel)]="local_data.uniqueId">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Vendor Address</mat-label>
+            <input placeholder="Vendor Address" matInput [(ngModel)]="local_data.vendoraddress">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Username</mat-label>
+            <input placeholder="Username" matInput [(ngModel)]="local_data.username">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Password</mat-label>
+            <input placeholder="Password" matInput [(ngModel)]="local_data.password">
+          </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button (click)="doAction()" color="accent">Add
+    <span>
+      <mat-icon>note_add</mat-icon>
+    </span>
+  </button>
+  <button mat-raised-button (click)="closeDialog()" mat-flat-button color="warn">
+    <mat-icon>cancel</mat-icon>Cancel
+  </button>

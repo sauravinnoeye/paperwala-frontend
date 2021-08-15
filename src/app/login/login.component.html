@@ -1,25 +1,46 @@
-<h1>{{responseMessage}}</h1>
-<div class="card">  
-    <div class="card-body">  
-      <!-- <form>   -->
-        <div class="form-group">  
-          <label class="col-md-4">Username</label>  
-          <input type="text" class="form-control" [(ngModel)]="username" required />  
-        </div>  
-        <div class="form-group">  
-          <label class="col-md-4">Password</label>  
-          <input type="password" class="form-control" [(ngModel)]="password" required/>  
-        </div>  
-        <div class="form-group">  
-          <label class="col-md-4">Role</label>  
-          <input type="text" class="form-control" [(ngModel)]="role" required/>  
-        </div>  
-        <div class="form-group">  
-          <button type="submit" class="btn btn-primary" (click)="userLogin()" >Login</button>  
-        </div> 
-        <div>
-          <label class="col-md-4">Password</label>  
-        </div> 
-      <!-- </form>   -->
-    </div>  
-  </div>  
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <P>Sign1 Into Your Account </P>
+    </div>
+    <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+      <div class="emailInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Enter email address" required
+          />
+          <mat-error *ngIf="!loginForm.controls['email'].valid">
+              Email is required
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <span>
+          <a class="text-link" class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
+        </span>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+          <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+      </button>
+      <mat-error *ngIf="!loginForm.controls['password'].valid">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary">Login</button>
+    </form>
+
+    <div class="button-row">
+        <p><a class="text-link" class="create-Link" routerLink="/paperwala-frontend/signup">Create New Account</a></p>
+    </div>
+  </mat-card-content>
+</mat-card>
