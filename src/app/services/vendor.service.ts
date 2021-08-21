@@ -11,25 +11,25 @@ export class VendorService {
     private httpClient: HttpClient
   ) { }
 
-  addProduct(data: any) {
+  addVendor(data: any) {
     return this.httpClient.post(this.env.getUrl() +
-        "/add/", data, {
+        "/vendor/addVendor/", data, {
         headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
-  getProducts() {
-   return this.httpClient.get(this.env.getUrl() + "/product/");
+  getVendors() {
+   return this.httpClient.get(this.env.getUrl() + "/vendor/getAllVendor/");
   }
 
-  updateProducts(data: any) {
-   return this.httpClient.put(this.env.getUrl() +
-   "/update/", data, {
+  updateVendor(data: any,id:any) {
+   return this.httpClient.post(this.env.getUrl() +
+   "/vendor/updateVendor/"+id, data, {
    headers: new HttpHeaders().set('Content-Type', "application/json")
  })
  }
 
-   deleteProducts(id: any) {
-   return this.httpClient.delete(this.env.getUrl() + "/delete/"+id);
+   deleteVendor(id: any) {
+   return this.httpClient.delete(this.env.getUrl() + "/vendor/deleteVendor/"+id);
  }
 }

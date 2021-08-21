@@ -3,23 +3,36 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddNewVendorDialogComponent } from '../dialog/add-new-vendor-dialog/add-new-vendor-dialog.component';
 import { EditVendorDialogComponent } from '../dialog/edit-vendor-dialog/edit-vendor-dialog.component';
 import { VendorForUpdateData } from '../../Shared/events.data';
-const ELEMENT_DATA: VendorForUpdateData[] = [
-  { Id: "1", vendorName: 'Saurav kumar', type: 'type', agency: 'Agency', contact: '1234567890', uniqueId: 'UI123', vendoraddress: 'India', username: 'gaurav', password: '123456' },
-  { Id: "2", vendorName: 'Gaurav kumar', type: 'type', agency: 'Agency', contact: '1234567890', uniqueId: 'UI123', vendoraddress: 'India', username: 'gaurav', password: '123456' },
-];
+import { VendorService } from '../../services/vendor.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 @Component({
   selector: 'app-manage-vendor',
   templateUrl: './manage-vendor.component.html',
   styleUrls: ['./manage-vendor.component.scss']
 })
 export class ManageVendorComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'vendorName', 'type', 'agency', 'contact', 'uniqueId', 'vendoraddress', 'username', 'password', 'action'];
+  displayedColumns: string[] = ['id', 'vendorName', 'type', 'agency', 'contact', 'uniqueId', 'vendorAddress', 'userName', 'password', 'action'];
   dataSource: any;
+  responseMessage: any;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    private vendorService: VendorService,
+    private _snackBar: MatSnackBar) {
+    this.tableData();
+  }
 
   ngOnInit(): void {
-    this.dataSource = ELEMENT_DATA;
+  }
+
+  tableData() {
+    this.vendorService.getVendors().subscribe((response: any) => {
+      console.log(response);
+      this.dataSource = response;
+    }, (error: any) => {
+      console.log(error.error?.message);
+    })
   }
 
   openDialog() {
@@ -28,7 +41,37 @@ export class ManageVendorComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-    console.log(result);
+      if (result?.event !== 'Cancel' && result !== undefined) {
+      var data = {
+        vendorName: result.vendorName,
+        type: result.type,
+        agency: result.agency,
+        contact: result.contact,
+        uniqueId: result.uniqueId,
+        vendorAddress: result.vendoraddress,
+        userName: result.username,
+        password: result.password
+      };
+      this.vendorService.addVendor(data).subscribe((response: any) => {
+        console.log(response);
+        this.responseMessage = response?.message;
+        this.openSnackBar(this.responseMessage, "Close");
+        this.tableData();
+      }, (error) => {
+        console.log(error);
+        this.responseMessage = error;
+        this.openSnackBar(this.responseMessage, "Close");
+      });
+    }
+    });
+    
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 2000
     });
   }
 
@@ -39,18 +82,43 @@ export class ManageVendorComponent implements OnInit {
       data: obj
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result.event == 'Update') {
-    //     this.updateRowData(result.data);
-    //   } else if (result.event == 'Delete') {
-    //     this.deleteRowData(result.data);
-    //   }
-    // });
-    // console.log(obj)
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.event !== 'Cancel' && result !== undefined) {
+        var data = {
+          vendorName: result.vendorName,
+          type: result.type,
+          agency: result.agency,
+          contact: result.contact,
+          uniqueId: result.uniqueId,
+          vendorAddress: result.vendorAddress,
+          userName: result.userName,
+          password: result.password
+        };
+        this.vendorService.updateVendor(data, result.id).subscribe((response: any) => {
+          console.log(response);
+          this.responseMessage = response?.message;
+          this.openSnackBar(this.responseMessage, "Close");
+          this.tableData();
+        }, (error) => {
+          console.log(error);
+          this.responseMessage = error;
+          this.openSnackBar(this.responseMessage, "Close");
+        });
+      }
+    });
   }
 
   delete(obj: any) {
-    console.log(obj);
+    this.vendorService.deleteVendor(obj).subscribe((response: any) => {
+      console.log(response);
+      this.responseMessage = response?.message;
+      this.openSnackBar(this.responseMessage, "Close");
+      this.tableData();
+    }, (error) => {
+      console.log(error);
+      this.responseMessage = error;
+      this.openSnackBar(this.responseMessage, "Close");
+    });
   }
 
 }

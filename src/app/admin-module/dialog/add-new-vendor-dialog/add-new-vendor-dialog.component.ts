@@ -24,7 +24,6 @@ export class AddNewVendorDialogComponent implements OnInit {
   doAction(value:any) {
     this.dialogRef.close(this.updateData = this.local_data);
     // console.log(this.updateData);
-    this.openSnackBar("response response response response response response response response response response response response response response response response","Close");
   }
 
   openSnackBar(message: string, action: string) {

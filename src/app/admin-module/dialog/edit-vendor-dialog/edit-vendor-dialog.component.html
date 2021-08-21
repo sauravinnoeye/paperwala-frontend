@@ -44,7 +44,7 @@
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Vendor Address</mat-label>
-          <input placeholder="Vendor Address" name="vendoraddress" matInput [(ngModel)]="local_data.vendoraddress"
+          <input placeholder="Vendor Address" name="vendoraddress" matInput [(ngModel)]="local_data.vendorAddress"
             required>
           <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.vendoraddress?.invalid && (vendorForm.controls.vendoraddress?.touched || vendorForm.controls.vendoraddress?.dirty)">
             *Type required
@@ -53,7 +53,7 @@
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Username</mat-label>
-          <input placeholder="Username" name="username" matInput [(ngModel)]="local_data.username" required>
+          <input placeholder="Username" name="username" matInput [(ngModel)]="local_data.userName" required>
           <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.username?.invalid && (vendorForm.controls.username?.touched || vendorForm.controls.username?.dirty)">
             *Type required
           </mat-hint>
