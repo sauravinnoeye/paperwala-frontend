@@ -30,3 +30,13 @@ button{
 ng-template{
   padding: 10px;
 }
+
+.mat-toolbar {
+  margin: -24px;
+  margin-bottom: 0;
+  width: auto;
+}
+
+.spacer {
+  flex: 1 auto;
+}

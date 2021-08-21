@@ -58,7 +58,7 @@ export class SignupComponent implements OnInit {
         this.responseMessage = error.error?.message;
       }
       else
-      this.responseMessage = "Some thing went Wrong."
+      this.responseMessage = "Something went Wrong."
       this.openSnackBar(this.responseMessage,"Close");
     });
 

@@ -15,7 +15,12 @@ export class UsersService {
 
   }
 
-  login(){}
+  login(data: any){
+    return this.httpClient.post(this.env.getUrl() +
+    "/users/login", data, {
+    headers: new HttpHeaders().set('Content-Type', "application/json")
+  })
+  }
  
   signUp(data: any) {
     return this.httpClient.post(this.env.getUrl() +

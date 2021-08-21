@@ -31,6 +31,12 @@ ng-template{
   padding: 10px;
 }
 
-.invalid-msg{
-  color: red !important;
+.mat-toolbar {
+  margin: -24px;
+  margin-bottom: 0;
+  width: auto;
+}
+
+.spacer {
+  flex: 1 auto;
 }

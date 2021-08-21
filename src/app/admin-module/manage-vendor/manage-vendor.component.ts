@@ -41,7 +41,7 @@ export class ManageVendorComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result?.event !== 'Cancel' && result !== undefined) {
+      if (result?.event !== 'Cancel' && result !== undefined && result !== '') {
       var data = {
         vendorName: result.vendorName,
         type: result.type,
@@ -83,7 +83,7 @@ export class ManageVendorComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result?.event !== 'Cancel' && result !== undefined) {
+      if (result?.event !== 'Cancel' && result !== undefined && result !== '') {
         var data = {
           vendorName: result.vendorName,
           type: result.type,

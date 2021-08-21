@@ -24,20 +24,32 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(value: any) {
-    localStorage.setItem('email', "123");
-    this.router.navigate(['/admin/module']);
-    console.log(value)
       this.data = {
         userName: this.username,
         userPassword: this.password,
       }
 
-    this.usersService.signUp(this.data).subscribe((response: any) => {
-      console.log(response);
-      // this.responseMessage = response?.message;
+    this.usersService.login(this.data).subscribe((response: any) => {
+      if(response.id && response.userName && response.role){
+        localStorage.setItem('id', response.id);
+        localStorage.setItem('userName', response.userName);
+        localStorage.setItem('role', response.role);
+        if(response.role === 'admin')
+        this.router.navigate(['/admin/module']);
+        else if(response.role === 'user')
+        this.router.navigate(['/admin/module']);
+      }
+      else{
+        this.openSnackBar("Something went wrong","Close");
+      }
+      console.log(response?.id);
     }, (error) => {
       console.log(error);
-      this.responseMessage = error;
+      if(error.error?.message){
+        this.responseMessage = error.error?.message;
+      }
+      else
+      this.responseMessage = "Something went Wrong."
       this.openSnackBar(this.responseMessage,"Close");
     });
 
