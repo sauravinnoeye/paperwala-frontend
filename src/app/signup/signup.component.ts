@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { UsersService } from '../services/users.service';
 
@@ -11,33 +13,66 @@ export class SignupComponent implements OnInit {
   username: any;
   password: any;
   role: any;
+  address:any;
+  contact:any;
+  hideOrShow: boolean = false;
+  data:any;
 
-  responseMessage:any;
+  responseMessage: any;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService,
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
-   userLogin() {
-    // console.log("this is saurav trying to login "+this.username+"-----"+this.password);
-    // this.loginService.loginUser(this.username,this.password);
-
-    var data = {
-      userName: this.username,
-      userPassword: this.password,
-      userRole: this.role
+  usersingup(value: any) {
+    console.log(value)
+    if(this.role == "admin"){
+      this.data = {
+        userName: this.username,
+        userPassword: this.password,
+        userRole: this.role
+      }
     }
-    // if(this.username == undefined || this.password== undefined || this.role==undefined){
 
-    // }else{
-    this.usersService.signUp(data).subscribe((response:any) => {
+    else{
+      this.data = {
+        userName: this.username,
+        userPassword: this.password,
+        userRole: this.role,
+        address: this.address,
+        contact: this.contact
+      }
+    }
+
+    this.usersService.signUp(this.data).subscribe((response: any) => {
       console.log(response);
-      this.responseMessage=response?.message;
+      this.responseMessage = response?.message;
+      this.openSnackBar(this.responseMessage,"Close");
+      this.router.navigateByUrl('/login');
     }, (error) => {
       console.log(error);
-      this.responseMessage=error;
+      this.responseMessage = error;
+      this.openSnackBar(this.responseMessage,"Close");
     });
- // }
+
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action,{
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration:2000
+    });
+  }
+
+  valid(value: any) {
+    if (value == "user")
+      this.hideOrShow = true;
+    else
+      this.hideOrShow = false;
+    console.log(value)
   }
 }
