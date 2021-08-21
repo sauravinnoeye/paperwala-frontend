@@ -23,20 +23,13 @@ export class ManageVendorComponent implements OnInit {
   }
 
   openDialog() {
-    // obj.action = action;
     const dialogRef = this.dialog.open(AddNewVendorDialogComponent, {
       width: '800px',
-      // data: obj
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result.event == 'Update') {
-    //     this.updateRowData(result.data);
-    //   } else if (result.event == 'Delete') {
-    //     this.deleteRowData(result.data);
-    //   }
-    // });
-    // console.log(obj)
+    dialogRef.afterClosed().subscribe(result => {
+    console.log(result);
+    });
   }
 
   openEditDialog(action: any, obj: any) {

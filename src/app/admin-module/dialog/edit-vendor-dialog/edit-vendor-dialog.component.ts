@@ -19,7 +19,7 @@ export class EditVendorDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  doAction() {
+  doAction(value:any) {
     this.dialogRef.close(this.updateData = this.local_data);
     console.log(this.updateData);
   }

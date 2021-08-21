@@ -1,48 +1,80 @@
-<div class="dialogClass">
+<form #vendorForm="ngForm" (ngSubmit)="doAction(vendorForm)">
+  <div class="dialogClass">
     <div fxFlex fxLayout="column">
       <div fxLayout="row wrap" fxLayoutGap="10px">
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Vendor Name</mat-label>
-          <input placeholder="Vendor Name" matInput [(ngModel)]="local_data.vendorName">
+          <input placeholder="Vendor Name" name="vendorName" matInput [(ngModel)]="local_data.vendorName" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.vendorName?.invalid && (vendorForm.controls.vendorName?.touched || vendorForm.controls.vendorName?.dirty)">
+            *Name required
+          </mat-hint>
         </mat-form-field>
-  
+
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Type</mat-label>
-          <input placeholder="Type" matInput [(ngModel)]="local_data.type" required>
+          <input placeholder="Type" name="type" matInput [(ngModel)]="local_data.type" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.type?.invalid && (vendorForm.controls.type?.touched || vendorForm.controls.type?.dirty)">
+            *Type required
+          </mat-hint>
         </mat-form-field>
-  
+
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Agency</mat-label>
-          <input placeholder="Agency" matInput [(ngModel)]="local_data.agency">
+          <input placeholder="Agency" name="agency" matInput [(ngModel)]="local_data.agency" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.agency?.invalid && (vendorForm.controls.agency?.touched || vendorForm.controls.agency?.dirty)">
+            *Agency required
+          </mat-hint>
         </mat-form-field>
+
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Contact</mat-label>
-          <input placeholder="Contact" matInput [(ngModel)]="local_data.contact">
+          <input placeholder="Contact" name="contact" matInput [(ngModel)]="local_data.contact" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.contact?.invalid && (vendorForm.controls.contact?.touched || vendorForm.controls.contact?.dirty)">
+            *Contact required
+          </mat-hint>
         </mat-form-field>
+
         <mat-form-field appearance="outline" fxFlex>
-            <mat-label>Unique Id</mat-label>
-            <input placeholder="Unique Id" matInput [(ngModel)]="local_data.uniqueId">
-          </mat-form-field>
-          <mat-form-field appearance="outline" fxFlex>
-            <mat-label>Vendor Address</mat-label>
-            <input placeholder="Vendor Address" matInput [(ngModel)]="local_data.vendoraddress">
-          </mat-form-field>
-          <mat-form-field appearance="outline" fxFlex>
-            <mat-label>Username</mat-label>
-            <input placeholder="Username" matInput [(ngModel)]="local_data.username">
-          </mat-form-field>
-          <mat-form-field appearance="outline" fxFlex>
-            <mat-label>Password</mat-label>
-            <input placeholder="Password" matInput [(ngModel)]="local_data.password">
-          </mat-form-field>
+          <mat-label>Unique Id</mat-label>
+          <input placeholder="Unique Id" name="uniqueId" matInput [(ngModel)]="local_data.uniqueId" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.uniqueId?.invalid && (vendorForm.controls.uniqueId?.touched || vendorForm.controls.uniqueId?.dirty)">
+            *Type required
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Vendor Address</mat-label>
+          <input placeholder="Vendor Address" name="vendoraddress" matInput [(ngModel)]="local_data.vendoraddress"
+            required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.vendoraddress?.invalid && (vendorForm.controls.vendoraddress?.touched || vendorForm.controls.vendoraddress?.dirty)">
+            *Type required
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Username</mat-label>
+          <input placeholder="Username" name="username" matInput [(ngModel)]="local_data.username" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.username?.invalid && (vendorForm.controls.username?.touched || vendorForm.controls.username?.dirty)">
+            *Type required
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Password</mat-label>
+          <input placeholder="Password" name="password" matInput [(ngModel)]="local_data.password" required>
+          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.password?.invalid && (vendorForm.controls.password?.touched || vendorForm.controls.password?.dirty)">
+            *Type required
+          </mat-hint>
+        </mat-form-field>
       </div>
     </div>
   </div>
-  <button mat-raised-button (click)="doAction()" color="accent">Add
+  <button type="submit" mat-raised-button color="primary" [disabled]="vendorForm.invalid">Add
     <span>
       <mat-icon>note_add</mat-icon>
     </span>
   </button>
-  <button mat-raised-button (click)="closeDialog()" mat-flat-button color="warn">
+  <button type="button" mat-raised-button (click)="closeDialog()" mat-flat-button color="warn">
     <mat-icon>cancel</mat-icon>Cancel
   </button>
+</form>
