@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Shared/material-module';
 import { AdminModuleModule } from './admin-module/admin-module.module';
 import { NetworkInterceptor } from './services/network.interceptor';
+import { VendorModuleModule } from './vendor-module/vendor-module.module';
+import { UserModuleModule } from './user-module/user-module.module';
 // import { LoaderComponent } from './Shared/loader/loader.component';
 
 @NgModule({
@@ -18,7 +20,6 @@ import { NetworkInterceptor } from './services/network.interceptor';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    // LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,10 +29,12 @@ import { NetworkInterceptor } from './services/network.interceptor';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    AdminModuleModule
+    AdminModuleModule,
+    VendorModuleModule,
+    UserModuleModule
   ],
   providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:NetworkInterceptor,multi:true}],
   bootstrap: [AppComponent],
-  exports:[AdminModuleModule,MaterialModule]
+  exports:[AdminModuleModule,MaterialModule,VendorModuleModule,UserModuleModule]
 })
 export class AppModule { }

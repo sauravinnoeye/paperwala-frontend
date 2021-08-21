@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+      <span> Update Newspaper</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <form #newspaperForm="ngForm" (ngSubmit)="doAction(newspaperForm)">
+    <div class="dialogClass">
+      <div fxFlex fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Newspaper Name</mat-label>
+            <input placeholder="Newspaper Name" name="newspaperName" matInput [(ngModel)]="local_data.newspaperName" required>
+            <mat-hint class="invalid-msg"
+              *ngIf="newspaperForm.controls.newspaperName?.invalid && (newspaperForm.controls.newspaperName?.touched || newspaperForm.controls.newspaperName?.dirty)">
+              *Newspaper Name required
+            </mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Newspaper Rate</mat-label>
+            <input placeholder="Newspaper Rate" name="type" matInput [(ngModel)]="local_data.newspaperRate" required>
+            <mat-hint class="invalid-msg"
+              *ngIf="newspaperForm.controls.type?.invalid && (newspaperForm.controls.type?.touched || newspaperForm.controls.type?.dirty)">
+              *Newspaper Rate required
+            </mat-hint>
+          </mat-form-field>
+  
+        </div>
+      </div>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="newspaperForm.invalid">Add
+      <span>
+        <mat-icon>add_circle</mat-icon>
+      </span>
+    </button>
+    <button type="button" mat-raised-button (click)="closeDialog()" mat-flat-button color="warn">
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button>
+  </form>

@@ -1,0 +1,44 @@
+<mat-card>
+    <b><span>Manage Newspaper</span></b>
+    <button mat-flat-button color="primary" class="float-right" (click)="openDialog()">Add New Vendor</button>
+</mat-card>
+<mat-card>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="newspaperName">
+            <th mat-header-cell *matHeaderCellDef> newspaperName </th>
+            <td mat-cell *matCellDef="let element"> {{element.newspaperName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="newspaperRate">
+            <th mat-header-cell *matHeaderCellDef> newspaperRate </th>
+            <td mat-cell *matCellDef="let element"> {{element.newspaperRate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-raised-button color="primary" (click)="openEditDialog('Update',element)">
+                    <mat-icon>edit</mat-icon>Edit
+                </button> |
+                <button mat-raised-button color="warn" (click)="delete(element.id)">
+                    <mat-icon>delete</mat-icon>Delete
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>

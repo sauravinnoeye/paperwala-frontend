@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         if(response.role === 'admin')
         this.router.navigate(['/admin/module']);
         else if(response.role === 'user')
-        this.router.navigate(['/admin/module']);
+        this.router.navigate(['/vendor/module']);
       }
       else{
         this.openSnackBar("Something went wrong","Close");

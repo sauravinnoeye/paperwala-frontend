@@ -12,19 +12,10 @@ const routes: Routes = [
             path: '',
             redirectTo: 'admin/module'
         },
-        // {
-        //     path: 'dashboard',
-        //     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-        // },
-        // {
-        //     path: 'screen1',
-        //     loadChildren: () => import('./screen1/screen1.module').then(m => m.Screen1Module)
-        // },
         {
             path: 'vendor',
             component: ManageVendorComponent
         },
-        // {path: 'add/new/donor',component: AddNewDonorDialogComponent}
     ]
   }
 ];

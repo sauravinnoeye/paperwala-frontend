@@ -20,10 +20,10 @@ export interface VendorData {
     type: string;
     agency: string;
     contact: string;
-    uniqueId:string;
-    vendoraddress:string;
-    username:string;
-    password:string;
+    uniqueId: string;
+    vendoraddress: string;
+    username: string;
+    password: string;
 }
 
 export interface VendorForUpdateData {
@@ -32,8 +32,14 @@ export interface VendorForUpdateData {
     type: string;
     agency: string;
     contact: string;
-    uniqueId:string;
-    vendoraddress:string;
-    username:string;
-    password:string;
+    uniqueId: string;
+    vendoraddress: string;
+    username: string;
+    password: string;
+}
+
+export interface newspaperData {
+    id:any;
+    newspaperName: string;
+    newspaperRate: string;
 }
