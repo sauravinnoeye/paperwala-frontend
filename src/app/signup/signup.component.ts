@@ -54,7 +54,11 @@ export class SignupComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }, (error) => {
       console.log(error);
-      this.responseMessage = error;
+      if(error.error?.message){
+        this.responseMessage = error.error?.message;
+      }
+      else
+      this.responseMessage = "Some thing went Wrong."
       this.openSnackBar(this.responseMessage,"Close");
     });
 
