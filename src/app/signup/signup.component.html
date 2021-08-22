@@ -48,7 +48,7 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Sign Up</span>
+              <span class="padding-bottom--15 text-center">Sign Up</span>
               <form #signupForm="ngForm" (ngSubmit)="usersingup(signupForm)">
                 <mat-form-field appearance="outline" fxFlex style="width: 100%;">
                   <mat-label>Username</mat-label>
@@ -71,8 +71,8 @@
                 <mat-form-field appearance="outline" fxFlex>
                   <mat-label>Select Role</mat-label>
                   <mat-select name="branch" (selectionChange)="valid($event.value)" [(ngModel)]="role" required>
-                    <mat-option value="admin">Admin</mat-option>
-                    <mat-option value="user">User</mat-option>
+                    <mat-option value="Admin">Admin</mat-option>
+                    <mat-option value="User">User</mat-option>
                   </mat-select>
                   <mat-hint class="invalid-msg"
                   *ngIf="signupForm.controls.role?.invalid && (signupForm.controls.role?.touched || signupForm.controls.role?.dirty)">

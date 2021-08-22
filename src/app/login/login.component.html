@@ -48,7 +48,7 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Login</span>
+              <span class="padding-bottom--15 text-center">Login</span>
               <form #loginForm="ngForm" (ngSubmit)="userLogin(loginForm)">
                 <mat-form-field appearance="outline" fxFlex style="width: 100%;">
                   <mat-label>Username</mat-label>
@@ -61,11 +61,23 @@
 
                 <mat-form-field appearance="outline" fxFlex style="width: 100%;">
                   <mat-label>Password</mat-label>
-                  <input type="password" placeholder="Password" name="password" [(ngModel)]="password" matInput
+                  <input type="password" placeholder="Password" name="userPassword" [(ngModel)]="userPassword" matInput
                     required>
-                  <mat-hint class="invalid-msg" *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || loginForm.controls.password?.dirty)">
+                  <mat-hint class="invalid-msg" *ngIf="loginForm.controls.userPassword?.invalid && (loginForm.controls.userPassword?.touched || loginForm.controls.userPassword?.dirty)">
                     *Password required
                   </mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>Select Role</mat-label>
+                  <mat-select name="userRole" [(ngModel)]="userRole" required>
+                    <mat-option value="Admin">Admin</mat-option>
+                    <mat-option value="User">User</mat-option>
+                    <mat-option value="Vendor">Vendor</mat-option>
+                  </mat-select>
+                  <mat-hint class="invalid-msg"
+                  *ngIf="loginForm.controls.userRole?.invalid && (loginForm.controls.userRole?.touched || loginForm.controls.userRole?.dirty)">
+                  *User Type required</mat-hint>
                 </mat-form-field>
                 <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
               </form>

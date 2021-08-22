@@ -11,25 +11,25 @@ export class NewspaperService {
     private httpClient: HttpClient
   ) { }
 
-  addVendor(data: any) {
+  addNewspaper(data: any) {
     return this.httpClient.post(this.env.getUrl() +
-        "/vendor/addVendor/", data, {
+        "/newspaper/addNewspaper/", data, {
         headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
-  getVendors() {
-   return this.httpClient.get(this.env.getUrl() + "/vendor/getAllVendor/");
+  getNewspapers(id:any) {
+   return this.httpClient.get(this.env.getUrl() + "/newspaper/getNewspaperByVendor/"+id);
   }
 
   updateVendor(data: any,id:any) {
    return this.httpClient.post(this.env.getUrl() +
-   "/vendor/updateVendor/"+id, data, {
+   "/newspaper/updateVendor/"+id, data, {
    headers: new HttpHeaders().set('Content-Type', "application/json")
  })
  }
 
-   deleteVendor(id: any) {
-   return this.httpClient.delete(this.env.getUrl() + "/vendor/deleteVendor/"+id);
+   deleteNewspaper(id: any) {
+   return this.httpClient.delete(this.env.getUrl() + "/newspaper/deleteNewspaper/"+id);
  }
 }

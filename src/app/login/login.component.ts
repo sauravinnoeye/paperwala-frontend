@@ -11,9 +11,9 @@ import { UsersService } from '../services/users.service';
 export class LoginComponent implements OnInit {
 
   username: any;
-  password: any;
-  role: any;
-  data:any;
+  userPassword: any;
+  userRole: any;
+  data: any;
   responseMessage: any;
 
   constructor(private usersService: UsersService,
@@ -24,43 +24,48 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(value: any) {
-      this.data = {
-        userName: this.username,
-        userPassword: this.password,
-      }
+    this.data = {
+      userName: this.username,
+      userPassword: this.userPassword,
+      userRole: this.userRole
+    }
 
     this.usersService.login(this.data).subscribe((response: any) => {
-      if(response.id && response.userName && response.role){
+      console.log(response)
+      if (response.id && response.userName && response.role) {
         localStorage.setItem('id', response.id);
         localStorage.setItem('userName', response.userName);
         localStorage.setItem('role', response.role);
-        if(response.role === 'admin')
-        this.router.navigate(['/admin/module']);
-        else if(response.role === 'user')
-        this.router.navigate(['/vendor/module']);
+        if (response.role === 'Admin')
+          this.router.navigate(['/admin/module']);
+        else if (response.role === 'Vendor')
+          this.router.navigate(['/vendor/module']);
+        else if(response.role === 'User')
+        this.router.navigate(['/user/module']);
       }
-      else{
-        this.openSnackBar("Something went wrong","Close");
+      else if(response?.message){
+        this.openSnackBar(response?.message, "Close");
       }
-      console.log(response?.id);
+      else
+      this.openSnackBar("Something went wrong.","Close");
     }, (error) => {
       console.log(error);
-      if(error.error?.message){
+      if (error.error?.message) {
         this.responseMessage = error.error?.message;
       }
       else
-      this.responseMessage = "Something went Wrong."
-      this.openSnackBar(this.responseMessage,"Close");
+        this.responseMessage = "Something went Wrong."
+      this.openSnackBar(this.responseMessage, "Close");
     });
 
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action,{
+    this._snackBar.open(message, action, {
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      duration:2000
+      duration: 2000
     });
   }
-  
+
 }
