@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" class="">
+    <span>
+        Welcome {{userName}}
+    </span>
+    <div class="spacer"></div>
+    <a mat-button routerLink="/user/module/vendor">View Vendor</a>
+    <!-- <a mat-button routerLink="new-donor">Category</a>
+    <a mat-button routerLink="new-donor">Questions</a> -->
+    <a mat-raised-button color="accent" (click)="logout()">Logout</a>
+</mat-toolbar>

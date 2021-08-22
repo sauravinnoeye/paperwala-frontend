@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserModuleComponent } from './user-module.component';
+import { ViewVendorComponent } from './view-vendor/view-vendor.component';
 
 const routes: Routes = [{
   path: '',
@@ -8,12 +9,12 @@ const routes: Routes = [{
   children: [
       {
           path: '',
-          redirectTo: 'vendor/module'
+          redirectTo: 'user/module'
       },
-      // {
-      //     path: 'newspaper',
-      //     component: ManageNewspaperComponent
-      // },
+      {
+          path: 'vendor',
+          component: ViewVendorComponent
+      },
   ]
 }
 ];
