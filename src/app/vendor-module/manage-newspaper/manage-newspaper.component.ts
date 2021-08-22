@@ -83,26 +83,20 @@ export class ManageNewspaperComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
       if (result?.event !== 'Cancel' && result !== undefined && result !== '') {
-        // var data = {
-        //   newspaperId: result.newspaperId,
-        //   type: result.type,
-        //   agency: result.agency,
-        //   contact: result.contact,
-        //   uniqueId: result.uniqueId,
-        //   vendorAddress: result.vendorAddress,
-        //   userName: result.userName,
-        //   password: result.password
-        // };
-        // this.vendorService.updateVendor(data, result.id).subscribe((response: any) => {
-        //   console.log(response);
-        //   this.responseMessage = response?.message;
-        //   this.openSnackBar(this.responseMessage, "Close");
-        //   this.tableData();
-        // }, (error) => {
-        //   console.log(error);
-        //   this.responseMessage = error;
-        //   this.openSnackBar(this.responseMessage, "Close");
-        // });
+        var data = {
+          newspaperName: result.newspaperName,
+          newspaperRate: result.newspaperRate
+        };
+        this.newspaperService.updateNewspaper(data, result.newspaperId).subscribe((response: any) => {
+          console.log(response);
+          this.responseMessage = response?.message;
+          this.openSnackBar(this.responseMessage, "Close");
+          this.tableData();
+        }, (error) => {
+          console.log(error);
+          this.responseMessage = error;
+          this.openSnackBar(this.responseMessage, "Close");
+        });
       }
     });
   }

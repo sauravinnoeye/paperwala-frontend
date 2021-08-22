@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
 
   usersingup(value: any) {
     console.log(value)
-    if(this.role == "admin"){
+    if(this.role == "Admin"){
       this.data = {
         userName: this.username,
         userPassword: this.password,
@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
   }
 
   valid(value: any) {
-    if (value == "user")
+    if (value == "User")
       this.hideOrShow = true;
     else
       this.hideOrShow = false;

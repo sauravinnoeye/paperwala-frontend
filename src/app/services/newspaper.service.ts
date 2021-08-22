@@ -22,9 +22,9 @@ export class NewspaperService {
    return this.httpClient.get(this.env.getUrl() + "/newspaper/getNewspaperByVendor/"+id);
   }
 
-  updateVendor(data: any,id:any) {
+  updateNewspaper(data: any,id:any) {
    return this.httpClient.post(this.env.getUrl() +
-   "/newspaper/updateVendor/"+id, data, {
+   "/newspaper/updateNewspaper/"+id, data, {
    headers: new HttpHeaders().set('Content-Type', "application/json")
  })
  }
