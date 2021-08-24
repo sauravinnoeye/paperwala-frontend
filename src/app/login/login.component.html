@@ -68,7 +68,7 @@
                   </mat-hint>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" fxFlex>
+                <!-- <mat-form-field appearance="outline" fxFlex>
                   <mat-label>Select Role</mat-label>
                   <mat-select name="userRole" [(ngModel)]="userRole" required>
                     <mat-option value="Admin">Admin</mat-option>
@@ -78,7 +78,7 @@
                   <mat-hint class="invalid-msg"
                   *ngIf="loginForm.controls.userRole?.invalid && (loginForm.controls.userRole?.touched || loginForm.controls.userRole?.dirty)">
                   *User Type required</mat-hint>
-                </mat-form-field>
+                </mat-form-field> -->
                 <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
               </form>
             </div>

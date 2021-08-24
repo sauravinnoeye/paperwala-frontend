@@ -9,14 +9,18 @@ const routes: Routes = [
     path: '',
     component: VendorModuleComponent,
     children: [
-        {
-            path: '',
-            redirectTo: 'vendor/module'
-        },
-        {
-            path: 'newspaper',
-            component: ManageNewspaperComponent
-        },
+      {
+        path: '',
+        component: ManageNewspaperComponent
+      },
+      {
+        path: '',
+        redirectTo: 'vendor/module'
+      },
+      {
+        path: 'newspaper',
+        component: ManageNewspaperComponent
+      },
     ]
   }
 ];

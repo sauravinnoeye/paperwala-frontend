@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   username: any;
   userPassword: any;
-  userRole: any;
+  // userRole: any;
   data: any;
   responseMessage: any;
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.data = {
       userName: this.username,
       userPassword: this.userPassword,
-      userRole: this.userRole
+      // userRole: this.userRole
     }
 
     this.usersService.login(this.data).subscribe((response: any) => {

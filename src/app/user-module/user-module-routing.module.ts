@@ -7,14 +7,18 @@ const routes: Routes = [{
   path: '',
   component: UserModuleComponent,
   children: [
-      {
-          path: '',
-          redirectTo: 'user/module'
-      },
-      {
-          path: 'vendor',
-          component: ViewVendorComponent
-      },
+    {
+      path: '',
+      component: ViewVendorComponent
+    },
+    {
+      path: '',
+      redirectTo: 'user/module'
+    },
+    {
+      path: 'vendor',
+      component: ViewVendorComponent
+    },
   ]
 }
 ];

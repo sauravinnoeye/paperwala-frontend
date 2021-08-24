@@ -8,14 +8,18 @@ const routes: Routes = [
     path: '',
     component: AdminModuleComponent,
     children: [
-        {
-            path: '',
-            redirectTo: 'admin/module'
-        },
-        {
-            path: 'vendor',
-            component: ManageVendorComponent
-        },
+      {
+        path: '',
+        component: ManageVendorComponent
+      },
+      {
+        path: '',
+        redirectTo: 'admin/module'
+      },
+      {
+        path: 'vendor',
+        component: ManageVendorComponent
+      },
     ]
   }
 ];
