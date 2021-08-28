@@ -23,7 +23,7 @@ export class SubscriptionService {
   }
 
   getExpiredSubscriptionForUser(id:any) {
-    return this.httpClient.get(this.env.getUrl() + "/papersubscription/getExpiredDetailForVendorByVendorId/"+id);
+    return this.httpClient.get(this.env.getUrl() + "/papersubscription/getExpiredDetailForUserByUserId/"+id);
    }
 
   updateVendor(data: any,id:any) {

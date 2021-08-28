@@ -9,6 +9,8 @@ import { ManageNewspaperComponent } from './manage-newspaper/manage-newspaper.co
 import { AddNewNewspaperDialogComponent } from './dialog/add-new-newspaper-dialog/add-new-newspaper-dialog.component';
 import { EditNewspaperDialogComponent } from './dialog/edit-newspaper-dialog/edit-newspaper-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { ActiveSubscriptionComponent } from './active-subscription/active-subscription.component';
+import { ExpiredSubscriptionComponent } from './expired-subscription/expired-subscription.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     ManageNewspaperComponent,
     AddNewNewspaperDialogComponent,
-    EditNewspaperDialogComponent
+    EditNewspaperDialogComponent,
+    ActiveSubscriptionComponent,
+    ExpiredSubscriptionComponent
   ],
   imports: [
     CommonModule,
