@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row fxLayout="row">
-      <span> View Newspaper </span>
-      <span class="spacer"></span>
-      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
-        <mat-icon>close</mat-icon>
-      </button>
+        <span> View Newspaper </span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
     </mat-toolbar-row>
-  </mat-toolbar>
-  <div class="example-container mat-elevation-z8">
+</mat-toolbar>
+<div class="example-container mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -21,30 +21,41 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="newspaperName">
-            <th mat-header-cell *matHeaderCellDef> newspaperName </th>
+            <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.newspaperName}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="newspaperRate">
-            <th mat-header-cell *matHeaderCellDef> newspaperRate </th>
+            <th mat-header-cell *matHeaderCellDef> Rate </th>
             <td mat-cell *matCellDef="let element"> {{element.newspaperRate}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
+        <ng-container matColumnDef="plan">
+            <th mat-header-cell *matHeaderCellDef> Subscribe </th>
             <td mat-cell *matCellDef="let element" class="action-link">
-                <button mat-icon-button color="primary">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Select Plan</mat-label>
+                    <mat-select name="branch" required [(ngModel)]="element.plan" #plan="ngModel">
+                        <mat-option value="Monthly">Monthly</mat-option>
+                        <mat-option value="Quarterly">Quarterly</mat-option>
+                        <mat-option value="Half Yearly">Half Yearly</mat-option>
+                        <mat-option value="Yearly">Yearly</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="subscribe">
+            <th mat-header-cell *matHeaderCellDef> Subscribe </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" [disabled]="element.plan === undefined" (click)="subscribe('Update',element)">
                     Subscribe
-                </button> 
-                <!-- |
-                <button mat-raised-button color="warn" (click)="delete(element.newspaperId)">
-                    <mat-icon>delete</mat-icon>Delete
-                </button> -->
+                </button>
             </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    </div>
+</div>

@@ -41,6 +41,7 @@ export class ViewVendorComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
       if (result?.event !== 'Cancel' && result !== undefined && result !== '') {
         var data = {
           vendorName: result.vendorName,

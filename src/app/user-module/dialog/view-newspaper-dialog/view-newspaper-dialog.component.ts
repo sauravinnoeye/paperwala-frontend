@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NewspaperService } from 'src/app/services/newspaper.service';
+import { SubscriptionService } from 'src/app/services/subscription.service';
 
 @Component({
   selector: 'app-view-newspaper-dialog',
@@ -11,13 +13,15 @@ export class ViewNewspaperDialogComponent implements OnInit {
   local_data: any;
   data1: any;
   updateData: any;
-  displayedColumns: string[] = ['newspaperId', 'newspaperName', 'newspaperRate', 'action'];
+  displayedColumns: string[] = ['newspaperId', 'newspaperName', 'newspaperRate', 'plan','subscribe'];
   dataSource: any;
   responseMessage: any;
   id:any;
   constructor(public dialogRef: MatDialogRef<ViewNewspaperDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-    private newspaperService: NewspaperService) {
+    private newspaperService: NewspaperService,
+    private subscriptionService: SubscriptionService,
+    private _snackBar: MatSnackBar) {
     this.local_data = { ...data };
     console.log(this.local_data);
     this.tableData();
@@ -42,5 +46,36 @@ export class ViewNewspaperDialogComponent implements OnInit {
     }, (error: any) => {
       console.log(error.error?.message);
     })
+  }
+
+  subscribe(action: any, obj: any){
+    this.dialogRef.close();
+    var data = {
+      user: localStorage.getItem('id'),
+      vendor: obj?.vendor.toString(),
+      newspaper: obj?.newspaperId.toString(),
+      duration: obj?.plan,
+      active:'Yes',
+      amount:obj?.newspaperRate
+    };
+    console.log(data);
+    this.subscriptionService.subscriptionPaper(data).subscribe((response: any) => {
+      console.log(response);
+      this.responseMessage = response?.message;
+      this.openSnackBar(this.responseMessage, "Close");
+      this.tableData();
+    }, (error) => {
+      console.log(error);
+      this.responseMessage = error;
+      this.openSnackBar(this.responseMessage, "Close");
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 2000
+    });
   }
 }
