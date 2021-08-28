@@ -7,7 +7,7 @@ import { SubscriptionService } from 'src/app/services/subscription.service';
   styleUrls: ['./active-subscription.component.scss']
 })
 export class ActiveSubscriptionComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'newspaperName', 'newspaperRate', 'contact', 'totalAmount', 'subscribeDate', 'expireDate', 'duration','vendorName','type','agency','vendorAddress'];
+  displayedColumns: string[] = ['id', 'newspaperName', 'newspaperRate','userName', 'contact','address', 'totalAmount', 'subscribeDate', 'expireDate', 'duration'];
   dataSource: any;
 
   constructor(private subscriptionService:SubscriptionService) { }
@@ -17,7 +17,7 @@ export class ActiveSubscriptionComponent implements OnInit {
   }
 
   tableData() {
-    this.subscriptionService.getMySubscriptionForUser(localStorage.getItem('id')).subscribe((response: any) => {
+    this.subscriptionService.getMySubscriptionForVendor(localStorage.getItem('id')).subscribe((response: any) => {
       console.log(response);
       this.dataSource = response;
     }, (error: any) => {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ActiveSubscriptionComponent } from './active-subscription/active-subscription.component';
+import { ExpiredSubscriptionComponent } from './expired-subscription/expired-subscription.component';
 import { ManageNewspaperComponent } from './manage-newspaper/manage-newspaper.component';
 import { VendorModuleComponent } from './vendor-module.component';
 import { VendorModuleModule } from './vendor-module.module';
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'active/subscription',
         component: ActiveSubscriptionComponent
+      },
+      {
+        path: 'expired/subscription',
+        component: ExpiredSubscriptionComponent
       },
     ]
   }

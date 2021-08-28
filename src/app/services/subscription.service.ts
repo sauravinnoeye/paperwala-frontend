@@ -26,14 +26,12 @@ export class SubscriptionService {
     return this.httpClient.get(this.env.getUrl() + "/papersubscription/getExpiredDetailForUserByUserId/"+id);
    }
 
-  updateVendor(data: any,id:any) {
-   return this.httpClient.post(this.env.getUrl() +
-   "/vendor/updateVendor/"+id, data, {
-   headers: new HttpHeaders().set('Content-Type', "application/json")
- })
- }
+   getMySubscriptionForVendor(id:any) {
+    return this.httpClient.get(this.env.getUrl() + "/papersubscription/getDetailForVendorByVendorId/"+id);
+   }
+ 
+   getExpiredSubscriptionForVendor(id:any) {
+     return this.httpClient.get(this.env.getUrl() + "/papersubscription/getExpiredDetailForVendorByVendorId/"+id);
+    }
 
-   deleteVendor(id: any) {
-   return this.httpClient.delete(this.env.getUrl() + "/vendor/deleteVendor/"+id);
- }
 }
