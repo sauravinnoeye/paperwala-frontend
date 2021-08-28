@@ -18,8 +18,8 @@ export class SubscriptionService {
     })
   }
 
-  getVendors() {
-   return this.httpClient.get(this.env.getUrl() + "/vendor/getAllVendor/");
+  getMySubscriptionForUser(id:any) {
+   return this.httpClient.get(this.env.getUrl() + "/papersubscription/getDetailForUserByUserId/"+id);
   }
 
   updateVendor(data: any,id:any) {

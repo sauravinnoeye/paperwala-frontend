@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ViewVendorComponent } from './view-vendor/view-vendor.component';
 import { ViewNewspaperDialogComponent } from './dialog/view-newspaper-dialog/view-newspaper-dialog.component';
+import { MySubscriptionComponent } from './my-subscription/my-subscription.component';
+import { ExpirdSubscriptionComponent } from './expird-subscription/expird-subscription.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ViewNewspaperDialogComponent } from './dialog/view-newspaper-dialog/vie
     UserModuleComponent,
     NavbarComponent,
     ViewVendorComponent,
-    ViewNewspaperDialogComponent
+    ViewNewspaperDialogComponent,
+    MySubscriptionComponent,
+    ExpirdSubscriptionComponent
   ],
   imports: [
     CommonModule,
