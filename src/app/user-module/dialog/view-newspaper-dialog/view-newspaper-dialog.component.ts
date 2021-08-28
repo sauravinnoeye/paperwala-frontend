@@ -13,10 +13,10 @@ export class ViewNewspaperDialogComponent implements OnInit {
   local_data: any;
   data1: any;
   updateData: any;
-  displayedColumns: string[] = ['newspaperId', 'newspaperName', 'newspaperRate', 'plan','subscribe'];
+  displayedColumns: string[] = ['newspaperId', 'newspaperName', 'newspaperRate', 'plan', 'subscribe'];
   dataSource: any;
   responseMessage: any;
-  id:any;
+  id: any;
   constructor(public dialogRef: MatDialogRef<ViewNewspaperDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private newspaperService: NewspaperService,
@@ -30,7 +30,7 @@ export class ViewNewspaperDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  doAction(value:any) {
+  doAction(value: any) {
     this.dialogRef.close(this.updateData = this.local_data);
     console.log(this.updateData);
   }
@@ -48,27 +48,29 @@ export class ViewNewspaperDialogComponent implements OnInit {
     })
   }
 
-  subscribe(action: any, obj: any){
-    this.dialogRef.close();
-    var data = {
-      user: localStorage.getItem('id'),
-      vendor: obj?.vendor.toString(),
-      newspaper: obj?.newspaperId.toString(),
-      duration: obj?.plan,
-      active:'Yes',
-      amount:obj?.newspaperRate
-    };
-    console.log(data);
-    this.subscriptionService.subscriptionPaper(data).subscribe((response: any) => {
-      console.log(response);
-      this.responseMessage = response?.message;
-      this.openSnackBar(this.responseMessage, "Close");
-      this.tableData();
-    }, (error) => {
-      console.log(error);
-      this.responseMessage = error;
-      this.openSnackBar(this.responseMessage, "Close");
-    });
+  subscribe(action: any, obj: any) {
+    if (confirm("Are you sure you want to Subscribe? Subscription can't be canceled mid way")) {
+      this.dialogRef.close();
+      var data = {
+        user: localStorage.getItem('id'),
+        vendor: obj?.vendor.toString(),
+        newspaper: obj?.newspaperId.toString(),
+        duration: obj?.plan,
+        active: 'Yes',
+        amount: obj?.newspaperRate
+      };
+      console.log(data);
+      this.subscriptionService.subscriptionPaper(data).subscribe((response: any) => {
+        console.log(response);
+        this.responseMessage = response?.message;
+        this.openSnackBar(this.responseMessage, "Close");
+        this.tableData();
+      }, (error) => {
+        console.log(error);
+        this.responseMessage = error;
+        this.openSnackBar(this.responseMessage, "Close");
+      });
+    }
   }
 
   openSnackBar(message: string, action: string) {

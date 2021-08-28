@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExpirdSubscriptionComponent } from './expird-subscription/expird-subscription.component';
+import { ExpiredSubscriptionComponent } from './expired-subscription/expired-subscription.component';
 import { MySubscriptionComponent } from './my-subscription/my-subscription.component';
 import { UserModuleComponent } from './user-module.component';
 import { ViewVendorComponent } from './view-vendor/view-vendor.component';
@@ -27,7 +27,7 @@ const routes: Routes = [{
     },
     {
       path: 'expired/subscription',
-      component: ExpirdSubscriptionComponent
+      component: ExpiredSubscriptionComponent
     }
   ]
 }

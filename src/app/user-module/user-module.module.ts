@@ -9,7 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ViewVendorComponent } from './view-vendor/view-vendor.component';
 import { ViewNewspaperDialogComponent } from './dialog/view-newspaper-dialog/view-newspaper-dialog.component';
 import { MySubscriptionComponent } from './my-subscription/my-subscription.component';
-import { ExpirdSubscriptionComponent } from './expird-subscription/expird-subscription.component';
+import { ExpiredSubscriptionComponent } from './expired-subscription/expired-subscription.component';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { ExpirdSubscriptionComponent } from './expird-subscription/expird-subscr
     ViewVendorComponent,
     ViewNewspaperDialogComponent,
     MySubscriptionComponent,
-    ExpirdSubscriptionComponent
+    ExpiredSubscriptionComponent
   ],
   imports: [
     CommonModule,
