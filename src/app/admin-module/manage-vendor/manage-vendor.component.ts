@@ -42,29 +42,29 @@ export class ManageVendorComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result?.event !== 'Cancel' && result !== undefined && result !== '') {
-      var data = {
-        vendorName: result.vendorName,
-        type: result.type,
-        agency: result.agency,
-        contact: result.contact,
-        uniqueId: result.uniqueId,
-        vendorAddress: result.vendoraddress,
-        userName: result.username,
-        password: result.password
-      };
-      this.vendorService.addVendor(data).subscribe((response: any) => {
-        console.log(response);
-        this.responseMessage = response?.message;
-        this.openSnackBar(this.responseMessage, "Close");
-        this.tableData();
-      }, (error) => {
-        console.log(error);
-        this.responseMessage = error;
-        this.openSnackBar(this.responseMessage, "Close");
-      });
-    }
+        var data = {
+          vendorName: result.vendorName,
+          type: result.type,
+          agency: result.agency,
+          contact: result.contact,
+          uniqueId: result.uniqueId,
+          vendorAddress: result.vendoraddress,
+          userName: result.username,
+          password: result.password
+        };
+        this.vendorService.addVendor(data).subscribe((response: any) => {
+          console.log(response);
+          this.responseMessage = response?.message;
+          this.openSnackBar(this.responseMessage, "Close");
+          this.tableData();
+        }, (error) => {
+          console.log(error);
+          this.responseMessage = error;
+          this.openSnackBar(this.responseMessage, "Close");
+        });
+      }
     });
-    
+
   }
 
   openSnackBar(message: string, action: string) {
@@ -109,16 +109,18 @@ export class ManageVendorComponent implements OnInit {
   }
 
   delete(obj: any) {
-    this.vendorService.deleteVendor(obj).subscribe((response: any) => {
-      console.log(response);
-      this.responseMessage = response?.message;
-      this.openSnackBar(this.responseMessage, "Close");
-      this.tableData();
-    }, (error) => {
-      console.log(error);
-      this.responseMessage = error;
-      this.openSnackBar(this.responseMessage, "Close");
-    });
+    if (confirm("Are you sure you want to delete?")) {
+      this.vendorService.deleteVendor(obj).subscribe((response: any) => {
+        console.log(response);
+        this.responseMessage = response?.message;
+        this.openSnackBar(this.responseMessage, "Close");
+        this.tableData();
+      }, (error) => {
+        console.log(error);
+        this.responseMessage = error;
+        this.openSnackBar(this.responseMessage, "Close");
+      });
+    }
   }
 
 }

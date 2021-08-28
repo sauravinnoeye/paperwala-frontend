@@ -13,3 +13,16 @@ table {
   .mat-column-productName {
     flex: 0 0 10%;
 }
+
+
+.example-container {
+    height: calc( 100vh - 130px);
+    overflow: auto;
+    padding: 0px 10px 0px 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  .outline {
+    border-style: none;
+    border-width: none;
+}

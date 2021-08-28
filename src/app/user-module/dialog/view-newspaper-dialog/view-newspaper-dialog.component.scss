@@ -8,7 +8,6 @@ mat-card{
 
 table {
     width: 100%;
-    margin-top: 10px;
   }
 
   .mat-column-productName {
@@ -56,4 +55,15 @@ ng-template{
 
 .spacer {
   flex: 1 auto;
+}
+
+.example-container {
+  height: calc( 100vh - 240px);
+  overflow: auto;
+  border-top: 1px solid #ccc;
+}
+
+.outline {
+  border-style: none;
+  border-width: none;
 }

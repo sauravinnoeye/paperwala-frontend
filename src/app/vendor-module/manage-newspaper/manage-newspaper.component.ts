@@ -17,12 +17,12 @@ export class ManageNewspaperComponent implements OnInit {
   displayedColumns: string[] = ['newspaperId', 'newspaperName', 'newspaperRate', 'action'];
   dataSource: any;
   responseMessage: any;
-  id:any;
+  id: any;
 
   constructor(public dialog: MatDialog,
     private newspaperService: NewspaperService,
     private _snackBar: MatSnackBar) {
-    this.id=localStorage.getItem('id');
+    this.id = localStorage.getItem('id');
     this.tableData();
   }
 
@@ -102,15 +102,17 @@ export class ManageNewspaperComponent implements OnInit {
   }
 
   delete(obj: any) {
-    this.newspaperService.deleteNewspaper(obj).subscribe((response: any) => {
-      console.log(response);
-      this.responseMessage = response?.message;
-      this.openSnackBar(this.responseMessage, "Close");
-      this.tableData();
-    }, (error) => {
-      console.log(error);
-      this.responseMessage = error;
-      this.openSnackBar(this.responseMessage, "Close");
-    });
+    if (confirm("Are you sure you want to delete?")) {
+      this.newspaperService.deleteNewspaper(obj).subscribe((response: any) => {
+        console.log(response);
+        this.responseMessage = response?.message;
+        this.openSnackBar(this.responseMessage, "Close");
+        this.tableData();
+      }, (error) => {
+        console.log(error);
+        this.responseMessage = error;
+        this.openSnackBar(this.responseMessage, "Close");
+      });
+    }
   }
 }

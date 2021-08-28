@@ -7,18 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  userName:any;
+  userName: any;
 
   constructor(private router: Router) {
     this.userName = localStorage.getItem('userName');
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigate(['/login']);
+  logout() {
+    if (confirm("Are you sure you want to logout?")) {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
   }
 
 }
