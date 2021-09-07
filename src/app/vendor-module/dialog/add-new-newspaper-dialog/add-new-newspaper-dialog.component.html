@@ -23,7 +23,7 @@
   
           <mat-form-field appearance="outline" fxFlex>
             <mat-label>Newspaper Rate</mat-label>
-            <input placeholder="Newspaper Rate" name="type" matInput [(ngModel)]="local_data.newspaperRate" required>
+            <input type="number" placeholder="Newspaper Rate" name="type" matInput [(ngModel)]="local_data.newspaperRate" required>
             <mat-hint class="invalid-msg"
               *ngIf="newspaperForm.controls.type?.invalid && (newspaperForm.controls.type?.touched || newspaperForm.controls.type?.dirty)">
               *Newspaper Rate required

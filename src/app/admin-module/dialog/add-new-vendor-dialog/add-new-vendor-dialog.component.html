@@ -40,12 +40,16 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Contact</mat-label>
-          <input placeholder="Contact" name="contact" matInput [(ngModel)]="local_data.contact" required>
+          <mat-label>Contact Number</mat-label>
+          <input type="number" placeholder="Contact Number" name="contact" matInput [(ngModel)]="local_data.contact" required
+            pattern="^[0-9]{10,15}$">
           <mat-hint class="invalid-msg"
-            *ngIf="vendorForm.controls.contact?.invalid && (vendorForm.controls.contact?.touched || vendorForm.controls.contact?.dirty)">
+            *ngIf="vendorForm.controls.contact?.errors?.required && (vendorForm.controls.contact?.touched || vendorForm.controls.contact?.dirty)">
             *Contact required
           </mat-hint>
+          <mat-hint class="invalid-msg"
+            *ngIf="!(vendorForm.controls.contact?.errors?.required) && vendorForm.controls.contact?.invalid">
+            *Please enter a valid Contact Number</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
