@@ -104,15 +104,21 @@
 
                 <div *ngIf="hideOrShow">
                   <mat-form-field appearance="outline" fxFlex style="width: 100%;">
-                    <mat-label>address</mat-label>
-                    <input placeholder="address" name="address" [(ngModel)]="address" matInput required pattern="^[a-zA-Z0-9,./]*$">
+                    <mat-label>First Name</mat-label>
+                    <input placeholder="First Name" name="firstName" [(ngModel)]="firstName" matInput required>
                     <mat-hint class="invalid-msg"
-                      *ngIf="signupForm.controls.address?.errors?.required && (signupForm.controls.address?.touched || signupForm.controls.address?.dirty)">
-                      *Address required
+                      *ngIf="signupForm.controls.firstName?.errors?.required && (signupForm.controls.firstName?.touched || signupForm.controls.firstName?.dirty)">
+                      *First Name required
                     </mat-hint>
+                  </mat-form-field>
+                  
+                  <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                    <mat-label>Last Name</mat-label>
+                    <input placeholder="Last Name" name="lastName" [(ngModel)]="lastName" matInput required>
                     <mat-hint class="invalid-msg"
-                    *ngIf="!(signupForm.controls.address?.errors?.required) && signupForm.controls.address?.invalid">
-                    *Please enter a valid Address</mat-hint>
+                      *ngIf="signupForm.controls.lastName?.errors?.required && (signupForm.controls.lastName?.touched || signupForm.controls.lastName?.dirty)">
+                      *Last Name required
+                    </mat-hint>
                   </mat-form-field>
 
                   <mat-form-field appearance="outline" fxFlex style="width: 100%;">
@@ -126,6 +132,31 @@
                     *ngIf="!(signupForm.controls.contact?.errors?.required) && signupForm.controls.contact?.invalid">
                     *Please enter a valid Contact Number</mat-hint>
                   </mat-form-field>
+
+                  <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                    <mat-label>Email</mat-label>
+                    <input placeholder="Email" name="email" [(ngModel)]="email" matInput required pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
+                    <mat-hint class="invalid-msg"
+                      *ngIf="signupForm.controls.email?.errors?.required && (signupForm.controls.email?.touched || signupForm.controls.email?.dirty)">
+                      *Email required
+                    </mat-hint>
+                    <mat-hint class="invalid-msg"
+                    *ngIf="!(signupForm.controls.email?.errors?.required) && signupForm.controls.email?.invalid">
+                    *Please enter a valid Email Address</mat-hint>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                    <mat-label>address</mat-label>
+                    <input placeholder="address" name="address" [(ngModel)]="address" matInput required pattern="^[a-zA-Z0-9,./ ]*$">
+                    <mat-hint class="invalid-msg"
+                      *ngIf="signupForm.controls.address?.errors?.required && (signupForm.controls.address?.touched || signupForm.controls.address?.dirty)">
+                      *Address required
+                    </mat-hint>
+                    <mat-hint class="invalid-msg"
+                    *ngIf="!(signupForm.controls.address?.errors?.required) && signupForm.controls.address?.invalid">
+                    *Please enter a valid Address</mat-hint>
+                  </mat-form-field>
+
                 </div>
 
                 <button mat-raised-button color="primary" [disabled]="signupForm.invalid">Signup</button>

@@ -32,7 +32,7 @@
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Agency</mat-label>
-          <input placeholder="Agency" name="agency" matInput [(ngModel)]="local_data.agency" required pattern="^[a-zA-Z0-9]*$">
+          <input placeholder="Agency" name="agency" matInput [(ngModel)]="local_data.agency" required pattern="^[a-zA-Z0-9, ]*$">
           <mat-hint class="invalid-msg"
             *ngIf="vendorForm.controls.agency?.errors?.required && (vendorForm.controls.agency?.touched || vendorForm.controls.agency?.dirty)">
             *Agency required
@@ -70,7 +70,7 @@
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Vendor Address</mat-label>
           <input placeholder="Vendor Address" name="vendoraddress" matInput [(ngModel)]="local_data.vendorAddress"
-            required pattern="^[a-zA-Z0-9,./]*$">
+            required pattern="^[a-zA-Z0-9,./ ]*$">
           <mat-hint class="invalid-msg"
           *ngIf="vendorForm.controls.vendoraddress?.errors?.required && (vendorForm.controls.vendoraddress?.touched || vendorForm.controls.vendoraddress?.dirty)">
           *Vendor Address required

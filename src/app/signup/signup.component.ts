@@ -10,8 +10,11 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  firstName:any;
+  lastName:any;
   username: any;
   password: any;
+  email:any;
   role: any;
   address:any;
   contact:any;
@@ -43,7 +46,10 @@ export class SignupComponent implements OnInit {
         userPassword: this.password,
         userRole: this.role,
         address: this.address,
-        contact: this.contact
+        contact: this.contact,
+        uemail:this.email,
+        firstName:this.firstName,
+        lastName:this.lastName
       }
     }
 
