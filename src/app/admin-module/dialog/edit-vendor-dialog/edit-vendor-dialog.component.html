@@ -15,7 +15,8 @@
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Vendor Name</mat-label>
           <input placeholder="Vendor Name" name="vendorName" matInput [(ngModel)]="local_data.vendorName" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.vendorName?.invalid && (vendorForm.controls.vendorName?.touched || vendorForm.controls.vendorName?.dirty)">
+          <mat-hint class="invalid-msg"
+            *ngIf="vendorForm.controls.vendorName?.invalid && (vendorForm.controls.vendorName?.touched || vendorForm.controls.vendorName?.dirty)">
             *Name required
           </mat-hint>
         </mat-form-field>
@@ -23,58 +24,102 @@
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Type</mat-label>
           <input placeholder="Type" name="type" matInput [(ngModel)]="local_data.type" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.type?.invalid && (vendorForm.controls.type?.touched || vendorForm.controls.type?.dirty)">
+          <mat-hint class="invalid-msg"
+            *ngIf="vendorForm.controls.type?.invalid && (vendorForm.controls.type?.touched || vendorForm.controls.type?.dirty)">
             *Type required
           </mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Agency</mat-label>
-          <input placeholder="Agency" name="agency" matInput [(ngModel)]="local_data.agency" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.agency?.invalid && (vendorForm.controls.agency?.touched || vendorForm.controls.agency?.dirty)">
+          <input placeholder="Agency" name="agency" matInput [(ngModel)]="local_data.agency" required pattern="^[a-zA-Z0-9]*$">
+          <mat-hint class="invalid-msg"
+            *ngIf="vendorForm.controls.agency?.errors?.required && (vendorForm.controls.agency?.touched || vendorForm.controls.agency?.dirty)">
             *Agency required
           </mat-hint>
+          <mat-hint class="invalid-msg"
+          *ngIf="!(vendorForm.controls.agency?.errors?.required) && vendorForm.controls.agency?.invalid">
+          *Please enter a valid Agency</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Contact</mat-label>
-          <input placeholder="Contact" name="contact" matInput [(ngModel)]="local_data.contact" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.contact?.invalid && (vendorForm.controls.contact?.touched || vendorForm.controls.contact?.dirty)">
+          <mat-label>Contact Number</mat-label>
+          <input type="number" placeholder="Contact Number" name="contact" matInput [(ngModel)]="local_data.contact" required
+            pattern="^[0-9]{10,15}$">
+          <mat-hint class="invalid-msg"
+            *ngIf="vendorForm.controls.contact?.errors?.required && (vendorForm.controls.contact?.touched || vendorForm.controls.contact?.dirty)">
             *Contact required
           </mat-hint>
+          <mat-hint class="invalid-msg"
+            *ngIf="!(vendorForm.controls.contact?.errors?.required) && vendorForm.controls.contact?.invalid">
+            *Please enter a valid Contact Number</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Id</mat-label>
-          <input placeholder="Id" name="uniqueId" matInput [(ngModel)]="local_data.uniqueId" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.uniqueId?.invalid && (vendorForm.controls.uniqueId?.touched || vendorForm.controls.uniqueId?.dirty)">
-            *Id required
-          </mat-hint>
+          <input placeholder="Id" name="uniqueId" matInput [(ngModel)]="local_data.uniqueId" required pattern="^[a-zA-Z0-9]*$">
+          <mat-hint class="invalid-msg"
+          *ngIf="vendorForm.controls.uniqueId?.errors?.required && (vendorForm.controls.uniqueId?.touched || vendorForm.controls.uniqueId?.dirty)">
+          *Id required
+        </mat-hint>
+        <mat-hint class="invalid-msg"
+        *ngIf="!(vendorForm.controls.uniqueId?.errors?.required) && vendorForm.controls.uniqueId?.invalid">
+        *Please enter a valid Id</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Vendor Address</mat-label>
           <input placeholder="Vendor Address" name="vendoraddress" matInput [(ngModel)]="local_data.vendorAddress"
-            required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.vendoraddress?.invalid && (vendorForm.controls.vendoraddress?.touched || vendorForm.controls.vendoraddress?.dirty)">
-            *Vendor Address required
-          </mat-hint>
+            required pattern="^[a-zA-Z0-9,./]*$">
+          <mat-hint class="invalid-msg"
+          *ngIf="vendorForm.controls.vendoraddress?.errors?.required && (vendorForm.controls.vendoraddress?.touched || vendorForm.controls.vendoraddress?.dirty)">
+          *Vendor Address required
+        </mat-hint>
+        <mat-hint class="invalid-msg"
+        *ngIf="!(vendorForm.controls.vendoraddress?.errors?.required) && vendorForm.controls.vendoraddress?.invalid">
+        *Please enter a valid Address</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Username</mat-label>
-          <input placeholder="Username" name="username" matInput [(ngModel)]="local_data.userName" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.username?.invalid && (vendorForm.controls.username?.touched || vendorForm.controls.username?.dirty)">
-            *Username required
-          </mat-hint>
+          <input placeholder="Username" name="username" matInput [(ngModel)]="local_data.userName" required pattern="^[a-zA-Z0-9]*$">
+          <mat-hint class="invalid-msg"
+          *ngIf="vendorForm.controls.username?.errors?.required && (vendorForm.controls.username?.touched || vendorForm.controls.username?.dirty)">
+          *Username required
+        </mat-hint>
+        <mat-hint class="invalid-msg"
+          *ngIf="!(vendorForm.controls.username?.errors?.required) && vendorForm.controls.username?.invalid">
+          *Please enter a valid Username</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Password</mat-label>
-          <input placeholder="Password" name="password" matInput [(ngModel)]="local_data.password" required>
-          <mat-hint class="invalid-msg" *ngIf="vendorForm.controls.password?.invalid && (vendorForm.controls.password?.touched || vendorForm.controls.password?.dirty)">
+          <input placeholder="Password" name="password" matInput [(ngModel)]="local_data.password" required pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{8,}$">
+          <mat-hint class="invalid-msg"
+            *ngIf="vendorForm.controls.password?.errors?.required && (vendorForm.controls.password?.touched || vendorForm.controls.password?.dirty)">
             *Password required
           </mat-hint>
+          <mat-hint class="invalid-msg"
+          *ngIf="!(vendorForm.controls.password?.errors?.required) && vendorForm.controls.password?.invalid">
+          
+          </mat-hint>
+          <br>
+          <mat-hint class="invalid-msg"
+          *ngIf="!(vendorForm.controls.password?.errors?.required) && vendorForm.controls.password?.invalid" style="font-size: 11px;">
+          *Please enter a valid Password
+          <br>
+          Password Pattern:
+          <br>
+          1. At least one upper case English letter
+          <br>
+          2. At least one lower case English letter
+          <br>
+          3. At least one digit
+          <br>
+          4. At least one special character
+          <br>
+          5. Minimum eight in length
+        </mat-hint>
         </mat-form-field>
       </div>
     </div>
