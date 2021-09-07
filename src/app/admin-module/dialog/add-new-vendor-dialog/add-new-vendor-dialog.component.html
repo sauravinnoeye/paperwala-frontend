@@ -49,11 +49,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Unique Id</mat-label>
-          <input placeholder="Unique Id" name="uniqueId" matInput [(ngModel)]="local_data.uniqueId" required>
+          <mat-label>Id</mat-label>
+          <input placeholder="Id" name="uniqueId" matInput [(ngModel)]="local_data.uniqueId" required>
           <mat-hint class="invalid-msg"
             *ngIf="vendorForm.controls.uniqueId?.invalid && (vendorForm.controls.uniqueId?.touched || vendorForm.controls.uniqueId?.dirty)">
-            *uniqueId required
+            *Id required
           </mat-hint>
         </mat-form-field>
 
