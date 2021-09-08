@@ -66,7 +66,7 @@
                 <mat-form-field appearance="outline" fxFlex style="width: 100%;">
                   <mat-label>Password</mat-label>
                   <input type="password" placeholder="Password" name="password" [(ngModel)]="password" matInput
-                    required pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{8,}$">
+                    required pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{6,15}$">
                   <mat-hint class="invalid-msg"
                     *ngIf="signupForm.controls.password?.errors?.required && (signupForm.controls.password?.touched || signupForm.controls.password?.dirty)">
                     *Password required
@@ -123,7 +123,7 @@
 
                   <mat-form-field appearance="outline" fxFlex style="width: 100%;">
                     <mat-label>Contact Number</mat-label>
-                    <input type="number" placeholder="Contact Number" name="contact" [(ngModel)]="contact" matInput required pattern="^[0-9]{10,15}$">
+                    <input placeholder="Contact Number" name="contact" [(ngModel)]="contact" matInput required pattern="^[e0-9]{10,15}$">
                     <mat-hint class="invalid-msg"
                       *ngIf="signupForm.controls.contact?.errors?.required && (signupForm.controls.contact?.touched || signupForm.controls.contact?.dirty)">
                       *Contact required

@@ -67,7 +67,7 @@
                 <mat-form-field appearance="outline" fxFlex style="width: 100%;">
                   <mat-label>Password</mat-label>
                   <input type="password" placeholder="Password" name="userPassword" [(ngModel)]="userPassword" matInput
-                    required pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{8,}$">
+                    required pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{6,15}$">
                   <mat-hint class="invalid-msg"
                     *ngIf="loginForm.controls.userPassword?.errors?.required && (loginForm.controls.userPassword?.touched || loginForm.controls.userPassword?.dirty)">
                     *Password required
